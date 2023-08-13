@@ -2,6 +2,7 @@ package otus.homework.reactivecats
 
 import android.content.Context
 import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
@@ -17,11 +18,7 @@ class LocalCatFactsGenerator(
      * чтобы она возвращала Fact со случайной строкой  из массива строк R.array.local_cat_facts
      * обернутую в подходящий стрим(Flowable/Single/Observable и т.п)
      */
-    fun generateCatFact(): Single<Fact> {
-        return Single.create { emitter ->
-            emitter.onSuccess(getRandomFact())
-        }
-    }
+    fun generateCatFact() = Observable.just(getRandomFact())
 
     /**
      * Реализуйте функцию otus.homework.reactivecats.LocalCatFactsGenerator#generateCatFactPeriodically так,
